@@ -1,0 +1,5 @@
+numpy==1.110
+PyQt5==5.6
+pgzero==1.1
+pyglet==1.2.4
+https://ci.appveyor.com/api/buildjobs/giqh0g5x2wfolu9r/artifacts/dist/pygame-1.9.2.dev1-cp35-cp35m-win_amd64.whl#egg=pygame-1.9.2.dev1
