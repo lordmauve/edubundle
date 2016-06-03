@@ -21,6 +21,13 @@ These scripts seem to be built [by pip using distlib](https://github.com/pypa/pi
 
 It might, however, be possible to modify these scripts to create our own entry point binaries, solving issue 1 but not 2.
 
+## Creating shortcuts
+
+I imagine entry points for applications within the distribution will be available to make it easy to get into the apps and environments we bundle.
+
+Links can be created using the win32com API - [StackOverflow answer](http://stackoverflow.com/questions/397125/reading-the-target-of-a-lnk-file-in-python) - [MSDN Docs](https://msdn.microsoft.com/en-us/library/xsy6k3ys(v=vs.84).aspx).
+
+
 ## Build system
 
 Tbc - but build on Appveyor?
