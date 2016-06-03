@@ -13,6 +13,7 @@ The plan is to re-pack pre-built Python and binary wheels, plus source for vario
 The Python.org Python distribution is shipped as an installer. The installed distribution includes a python.exe/pythonw.exe that can be relocated in the filesystem, but the pip.exe and other tools from `Scripts/` cannot be.
 
 This has two drawbacks:
+
 1. We cannot use this to create the entry points for our bundle.
 2. CLI commands created by pip will be unusable.
 
