@@ -1,7 +1,6 @@
 import sys
 import os
 import re
-import glob
 
 
 def fix_script(path):
@@ -21,7 +20,7 @@ def fix_script(path):
     with open(path, 'rb') as f:
         data = f.read()
 
-    mo = re.search(rb'#!([^\n]*)(pythonw?.exe)\n\r\n', data)
+    mo = re.search(rb'#!([^\n]*)(pythonw?.exe)([\r\n]+)', data)
 
     if not mo:
         # This may not be one of the distlib scripts
@@ -32,7 +31,7 @@ def fix_script(path):
 
     launcher = data[:mo.start(0)]
     zipdata = data[mo.end(0):]
-    shebang = b'#!%s\n\r\n' % mo.group(2)
+    shebang = b'#!%s%s' % (mo.group(2), mo.group(3))
 
     with open(path, 'wb') as f:
         f.write(launcher)
@@ -41,11 +40,10 @@ def fix_script(path):
 
 
 def fix_all_scripts(path):
-    wd = os.getcwd()
-    os.chdir(path)
-    for s in glob.glob('./*.exe'):
-        fix_script(s)
-
+    for f in os.listdir(path):
+        p = os.path.join(path, f)
+        if f.endswith(('.exe', '-script.py', '-script.pyw')):
+            fix_script(p)
 
 if __name__ == '__main__':
     fix_all_scripts(os.path.dirname(__file__))
